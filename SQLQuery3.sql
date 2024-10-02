@@ -12,8 +12,11 @@ CHECK (GIOITINH IN ('Nam','Nu'));
 
 --4--
 ALTER TABLE KETQUATHI
-ADD CONSTRAINT chk_diem_thi
-CHECK (DIEM >=0 AND DIEM <=10);
+ADD CONSTRAINT chk_diem_thi CHECK
+{
+   (DIEM >=0 AND DIEM <=10)
+   ADD ROUND(DIEM,2)
+}
 
 --5--
 CREATE TRIGGER trg_Update_KetQuaThi
